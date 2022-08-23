@@ -1,0 +1,28 @@
+﻿@model  LoginViewModels
+@{
+    Layout = "";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger "></div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label "></label>
+                <input asp-for="Phone" class="form-control " />
+                <span asp-validation-for="Phone" class="text-danger "></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ورود به سایت" class="btn btn-block btn-green" />
+            </div>
+            <a  asp-controller="Account" asp-action="ForgetPassword" class="pull-left textlogin">فراموشی رمز عبور</a>
+            <a asp-controller="Account" asp-action="Register" class="pull-right textlogin">عضویت در سایت </a>
+            <br />
+        </form>
+    </div>
+</div>

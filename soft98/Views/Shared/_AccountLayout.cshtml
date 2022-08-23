@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - soft98</title>
+
+    <link href="~/lib/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="~/css/AccountStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <div class="header">
+            <a href="/" class="pull-right Home"> خانه</a>
+            <a href="#" class="pull-left headerIcon"><i class="fa fa-search"></i></a>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <div class="dropdown pull-left">
+                        <a href="#" class="headerIconLogin pull-left"><i class="fa fa-user-circle"></i></a>
+                        <a href="#" class="arrow-header pull-left"><i class="fa fa-sort-down"></i></a>
+                        
+                        <div class="submenu">
+                            <p class="wellcome">خوش آمدید</p>
+                            <a asp-controller="Account" asp-action="Profile" >پروفایل<i class="fa fa-caret-left" style="float: right; padding: 5px;"></i></a>
+                            <a  asp-controller="Account" asp-action="SignOut" class="exit">خروج از سایت </a>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a href="#" class="pull-left headerIcon" onclick='ShowLogin()'><i class="fa fa-user-circle"></i></a>
+                }
+            }
+            <a href="#" class="pull-left headerIcon"><i class="fa fa-envelope"></i></a>
+            <a href="#" class="pull-left headerIcon"><i class="fa fa-bell"></i></a>
+        </div>
+    </header>
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+
+    <div class="footer text-center">
+        <p>کلیه حقوق، مطالب، تصاویر و طرح قالب برای سایت soft98.ir محفوظ است</p>
+        <p>استفاده از مطالب سافت 98 به هر نحو، تنها با اجازه کتبی از مدیریت امکانپذیر می باشد</p>
+        <p>سافت 98توسط <span style="color:#d95f47"> هاست دی ال </span> و به روی سرورهای قدرتمند <span style="color:#d95f47"> آسیاتک </span>پشتیبانی می شود </p>
+
+        <div class="siteDesign">
+            برنامه نویسی و طراحی وبسایت توسط
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header modalH">
+                    ورود به سایت
+                    <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="bodymodal" class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/lib/jQuery/jquery-1.10.2.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap-rtl.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        function ShowLogin() {
+            $.ajax({
+                url: "/Account/Login/",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalHeader').html('');
+                $('#bodymodal').html(result);
+            });
+        }
+    </script>
+</body>
+</html>

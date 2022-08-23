@@ -1,0 +1,51 @@
+﻿@model  ActiveViewModel
+@{
+    Layout = "";
+}
+
+<div class="row ">
+        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+            <form asp-action="Active">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Code" class="control-label"></label>
+                    <input asp-for="Code" class="form-control" />
+                </div>
+                <span asp-validation-for="Code" class="text-danger"></span>
+
+                <div class="form-group">
+                    <input type="submit" value="فعال سازی" class="btn btn-green btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modalH">
+                فعال سازی
+                <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="bodymodal" class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script>
+    function ShowLogin() {
+        $.ajax({
+            url: "/Account/Active/",
+            type: "Get",
+            data: {}
+        }).done(function (result) {
+            $('#myModal').modal('show');
+            $('#myModalHeader').html('');
+            $('#bodymodal').html(result);
+        });
+    }
+</script>

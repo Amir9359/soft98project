@@ -1,0 +1,258 @@
+﻿body {
+    direction: rtl;
+    font-family: 'B Yekan',Tahoma;
+    margin: auto;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+.fa {
+    margin-left: 10px;
+}
+
+.head-nav {
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    opacity: 0.7;
+}
+
+.headnavLeft {
+    float: left;
+    margin: 10px 0 0 20px;
+    color: black;
+}
+
+.headnavLeftIcon {
+    color: black !important;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+    .headnavLeftIcon:hover {
+        color: #ff6a00 !important;
+        transition: 0.8s;
+    }
+
+.sidebar {
+    width: 200px;
+    height: 100%;
+    overflow-x: hidden;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    top: 0;
+    right: 0;
+    float: left;
+    z-index: 1;
+    background-color: white;
+    opacity: 0.9;
+    color: black;
+    position: fixed;
+    overflow-y: auto;
+}
+
+    .sidebar a {
+        padding: 16px 18px 16px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+        display: block;
+    }
+
+.sidebar a:hover {
+    color: black;
+    text-decoration: none;
+    background-color: #ff6a00;
+    transition: 0.5s;
+}
+
+.sidebar a:focus {
+    color: black;
+    text-decoration: none;
+    background-color: #ff6a00;
+    transition: 0.5s;
+}
+
+.sidebar a:after {
+    color: black;
+    background-color: #ff6a00;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.sidestyle::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px transparent;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.sidestyle::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.sidestyle::-webkit-scrollbar-thumb {
+    background-image: -webkit-gradient(linear, 40% 0% 75%, form(#67dff5), to(#009ddc), color-stop(.6,#67dff5));
+    background-color: #009ddc;
+    border-radius: 10px;
+}
+
+.mainpanel {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.imgage1 {
+    position: fixed;
+}
+
+.headNavRight {
+    float: left;
+}
+
+.mysideMobile {
+    height: 100%;
+    width: 0;
+    overflow-x: hidden;
+    margin-bottom: 25px;
+    padding-top: 60px;
+    top: 0;
+    right: 0;
+    float: left;
+    z-index: 1;
+    background-color: white;
+    transition: 0.9s;
+    opacity: 0.9;
+    position: fixed;
+    overflow-y: auto;
+}
+
+#MainMobile {
+    transition: .5s;
+    margin-right: 10px;
+    padding: 16px;
+}
+
+.mysideMobile a {
+    font-size: 16px;
+    text-decoration: none;
+    padding: 16px 18px 18px 25px;
+    transition: 0.5s;
+    color: black;
+    display: block;
+}
+
+.mysideMobile a:hover {
+    color: black;
+    background-color: #ff6a00;
+    text-decoration: none;
+}
+
+.mysideMobile .Closebtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 20px;
+    line-height: 1;
+}
+
+.mysideMobile .Closebtn:hover {
+    color: white;
+    background-color: #051c2c
+}
+
+.openbtn {
+    margin-top: -6px;
+    font-size: 25px;
+    color: white;
+    background-color: #051c2c;
+    cursor: pointer;
+    padding: 10px 15px 7px 15px;
+    border: none;
+}
+.modalH {
+    background-color: #437593;
+    color: white;
+    font-size: 20px;
+}
+.openbtn:hover {
+    background-color: #ff6a00;
+    color: black;
+    transition: 0.8s
+}
+
+.openbtn:focus {
+    background-color: #ff6a00;
+    color: black;
+    transition: 0.8s
+}
+
+.icon-open {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.h3 {
+    color: white;   
+}
+table , dl {
+    color: #dbd8d8;
+    font-size: 19px;
+}
+
+tr:hover {
+    background-color: #dbd8d8;
+    color: #051c2c;
+}
+thead tr:hover:nth-child(1) {
+    background-color: transparent;
+    color: #dbd8d8;
+}
+.title-h {
+    margin-right: 240px;
+    color: moccasin;
+    margin-top: 45px;
+}
+.btn-orange {
+    background-color: #ff6a00;
+    color: #051c2c;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 20% !important;
+    top: 20px;
+    position: relative;
+    text-align: center;
+    transition: .2s;
+}
+    .btn-orange:hover {
+        color: #eee !important;
+        text-decoration: none;
+    }
+.labelStyle {
+    font-size: 22px;
+    margin: 0 10px 10px 0;
+    width: 30% !important;
+    color: #dbd8d8;
+}
+/*.main {
+    margin: -600px 250px 0 50px;
+}*/
+.table-chart {
+    margin: 0 236px 0 141px;
+    width: 80% !important;
+}

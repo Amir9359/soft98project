@@ -1,0 +1,40 @@
+﻿@model soft98.DataAccessLayer.Entities.User
+@{
+    ViewData["Title"] = "EditeUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 85px;">
+    <h3 class="pull-right">ویرایش کاربران</h3>
+    <h3 class="pull-left"><a class="btn-orange" asp-controller="AdminUser" asp-action="Index">بازگشت</a></h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0">
+    <form asp-action="EditeUser" class="table-chart">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Phone" class="control-label text-info"></label>
+            <input asp-for="Phone" class="form-control labelStyle" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div> 
+        <div class="form-group">
+            <div class="checkbox" style="color: black;">
+                <label class="labelStyle">
+                    <input style="margin-right: 120px;margin-top: 10px" asp-for="IsActive"/>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+    
+        </div>
+        <div class="form-group">
+            <input type="submit" value="ذخیره تغییرات" class="btn btn-block btn-orange" style="margin-right: 10px;" />
+        </div>
+    </form>
+</div>
+
+
+

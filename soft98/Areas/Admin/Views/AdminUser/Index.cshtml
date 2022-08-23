@@ -1,0 +1,85 @@
+﻿@model IEnumerable<soft98.DataAccessLayer.Entities.User>
+
+@{
+    ViewData["Title"] = "نمایش کاربران";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">نمایش کاربران</h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0">
+    <table class="table table-chart">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Role)
+                </th>
+                <th class="text-center">عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role.Name)
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="AdminUser" asp-action="EditeUser" asp-route-id="@item.Id" class="btn-xs btn-warning">ویرایش</a> |
+                        <a href="#" onclick="Delete(@item.Id)" class="btn-xs btn-danger">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="bodymodal" class="modal-body">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function Delete(id) {
+        $.ajax({
+            url: "/Admin/AdminUser/DeleteUser/" + id,
+            type: "Get",
+            data: {}
+        }).done(function (result) {
+            $('#myModal').modal('show');
+            $('#myModalHeader').html('');
+            $('#bodymodal').html(result);
+        });
+    }
+</script>
+ 

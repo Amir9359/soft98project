@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="fa">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/AdminStyle.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+    <div class="mainPanel">
+        <img src="~/Images/banner.png" class="imgage1" width="100%" height="100%" />
+        <div class="head-nav ">
+            <div class="headnavLeft hidden-xs">
+                <a href="/Account/SignOut"><i class="fa fa-times-circle headnavLeftIcon" data-toggle="tooltip" data-placement="bottom" title="خروج"></i></a>
+                <a href="/"><i class="fa fa-key headnavLeftIcon" data-toggle="tooltip" data-placement="bottom" title="تغییر کلمه عبور"></i></a>
+                <a href="/">
+                    <img src="~/Images/logo.png" width="130" height="55" style=" border-radius: 50%;" class="fa fa-key image-circle"
+                         data-toggle="tooltip" data-placement="bottom" title="soft98" />
+                </a>
+                <a></a>
+            </div>
+            <div class="headNavRight visible-xs">
+                <div id="MainMobile">
+                    <button class="openbtn visible-xs" onclick="OpenNav()"> <i class="fa fa-bars icon-open"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar sidestyle hidden-xs">
+            <a href="/" style="margin-top: 55px;"><i class="fa fa-home"></i>صفحه اصلی</a>
+            <a asp-area="Admin" asp-controller="Menu" asp-action="Index"><i class="fa fa-fw fa-list-ul"></i>منو</a>
+            <a asp-area="Admin" asp-controller="AdminUser" asp-action="Index"><i class="fas fa-users"></i> کاربران </a>
+        </div>
+        <div id="sideMobile" class="mysideMobile sidestyle visible-xs">
+            <a href="javascript:video(0)" class="Closebtn" onclick="CloseNav()">x</a>
+            <a href="/" style="margin-top: 55px;"><i class="fa fa-home"></i>صفحه اصلی</a>
+            <a asp-area="Admin" asp-controller="Menu" asp-action="Index"><i class="fa fa-fw fa-list-ul"></i>منو</a>
+            <a asp-area="Admin" asp-controller="AdminUser" asp-action="Index"><i class="fas fa-users"></i>کاربران</a>
+        </div>
+    </div>
+    <div class="main">
+        @RenderBody()
+    </div>
+    <script src="~/lib/jQuery/jquery-1.10.2.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap-rtl.min.js"></script>
+    <script src="~/js/AdminScript.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

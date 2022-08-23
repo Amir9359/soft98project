@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - soft98</title>
+
+    <link href="~/lib/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="~/css/HomeStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="divSearch">
+                <input type="text" name="search" class="pull-left headerIcon" />
+            </div>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <div class="dropdown pull-left">
+                        <a href="#" class="headerIconLogin pull-left"><i class="fa fa-user-circle"></i></a>
+                        <a href="#" class="arrow-header pull-left"><i class="fa fa-sort-down"></i></a>
+
+                        <div class="submenu">
+                            <p class="wellcome">خوش آمدید</p>
+                            <a asp-controller="Account" asp-action="Profile">پروفایل<i class="fa fa-caret-left" style="float: right; padding: 5px;"></i></a>
+                            <a asp-controller="Account" asp-action="SignOut" class="exit">خروج از سایت </a>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a href="#" class="pull-left headerIcon" onclick='ShowLogin()'><i class="fa fa-user-circle"></i></a>
+                    <a href="#" class="pull-left questionIcon" data-toggle="modal" data-target="#myModal2"><i class="fas fa-question-circle"></i></a>
+                }
+            }
+            <div class="dropdown pull-left">
+                <a href="#" class="pull-left "><i class="fa fa-envelope headerIconLogin" style="margin: 15px 0 0 20px;"></i></a>
+                <a href="#" class="arrow-header pull-left"><i class="fa fa-sort-down"></i></a>
+
+                <div class="submenu">
+                    <a href="#"><i class="fas fa-caret-left" style="padding: 5px; float: right;"></i>تماس با ما</a>
+                    <a href="#"><i class="fas fa-caret-left" style="padding: 5px; float: right;"></i>نظرات و پیشنهادات</a>
+                </div>
+            </div>
+            <a href="#" class="pull-left headerIcon" data-toggle="modal" data-target="#myModal3"><i class="fa fa-bell"></i></a>
+
+
+            @*//////////// منو //////////////*@
+            <div class="col-lg-8" >
+                <a href="/" class="pull-right Home" style="position: relative;top: -25px;">خانه</a>
+
+                @(await Component.InvokeAsync("MainMenuComponent"))
+
+                <div class="col-lg-2" style="display: inline-block;">
+                    <div style="margin-top:20px; color: #cccbcb">|</div>
+                    <a href="/favicon.ico" class="pull-right Home" style="position: relative;top: -22px;">تبلیغات</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <div id="myModal" class="modal fade out right" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+            <div class="modal-content">
+                <div class="modal-header modalH">
+                    ورود به سایت
+                    <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="bodymodal" class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal2" class="modal fade out" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modalStyle2">
+                <div class="modal-header">
+                    عضویت در سایت
+                    <button type="button" class="close pull-left" style="color:white;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="bodymodal" class="modal-body">
+                    <p>استفاده از امکانات سایت رایگان است اما : &hellip;</p>
+                    <p><span style="color:red"> 1. </span>شما با عضویت در سایت می توانید به آپشن های مفیدی دسترسی  داشته باشید.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal3" class="modal fade in" tabindex="-1" role="dialog">
+        <div class="modal-dialog cascading-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #51a4e0; direction: ltr; color: white;">
+                    <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title pull-left">اطلاعیه</h4>
+
+                </div>
+                <div id="bodymodal" class="modal-body" style="background-color: white; color: black">
+                    <p> به علت مشکل امنیتی در نرم افزار winrar لطفا نرم افزار را حذف و نسخه جدید را نصب نمایید. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/lib/jQuery/jquery-1.10.2.min.js"></script>
+    <script src="~/lib/mdb.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        function ShowLogin() {
+            $.ajax({
+                url: "/Account/Login/",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalHeader').html('');
+                $('#bodymodal').html(result);
+            });
+        }
+    </script>
+</body>
+</html>

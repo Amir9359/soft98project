@@ -1,0 +1,179 @@
+﻿body {
+    direction: rtl;
+    font-family: 'B Yekan', Tahoma;
+    line-height: 1.2;
+}
+
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+    box-shadow: 2px 2px #e9e5e5;
+}
+.Home {
+    color: black;
+    margin-right: 50px;
+    margin-top: 5px;
+    font-size: 19px;
+    padding: 10px 15px;
+}
+.arrow-headers {
+    font-size: 20px;
+    color: #7bad49;
+}
+
+.Home:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #7bad49;
+    border-radius: 5px;
+}
+
+.headerIcon {
+    font-size: 22px;
+    color: #666;
+    margin: 18px 0  0 20px;
+}
+
+    .headerIcon:hover {
+        color: #666;
+    }
+.pull-left {
+    float: left !important;
+}
+.modalH {
+    background-color: #437593;
+    color: white;
+    font-size: 20px;
+}
+.btn-green {
+    background-color: #7bad49;
+    color: white;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.btn-green:hover {
+    background-color: green;
+}
+.textlogin {
+    color: #4fa8c4;
+    font-size: 18px;
+}
+.textlogin:hover {
+    color: red;
+    text-decoration: none;
+}
+.arrow-header {
+    color: #7bad49;
+    font-size: 20px;
+    margin: 32px 0 0 -32px;
+}
+.headerIconLogin {
+    font-size: 19px;
+    margin: 10px 0 0 20px;
+    color: black;
+    padding: 5px 15px;
+}
+.headerIconLogin:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #7bad49;
+    border-radius: 5px;
+}
+.headerIconLogin:hover ~ .arrow-header {
+    font-size: 30px;
+    margin: 30px 0 0 -35px;
+    transition: 0.2s;
+    color: #7bad49;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: -4px;
+    background-color: #f5f5f5;
+    width: 200px;
+    height: auto;
+    z-index: 1;
+    margin: 60px 0 0 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 5px 5px rgba(0,0,0,.25);
+}
+.submenu a {
+    float: right;
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    width: 100%;
+    display: block;
+    font-size: 14px;
+}
+    .submenu a:hover {
+        background-color: #888888;
+    }
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+    .dropdown:hover .submenu{
+        display: block;
+    }
+    .headerIconLogin:focus ~ .submenu {
+        display: block;
+    }
+    .wellcome {
+        color: #7bad49;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .exit {
+        border-top: 1px solid darkgray;
+        color: #f82929 !important; 
+    }
+.divSearch input[type=text] {
+    font-size: 16px;
+    float: left;
+    width: 30px;
+    transition: width 0.4s ease-in-out;
+    background-color: transparent;
+    background-image: url('/Images/search.png') ;
+    background-position-y: center;
+    background-repeat: no-repeat ;
+    border: none;
+    margin-top: 5px;
+}
+.divSearch {
+    position: relative;
+    top: 10px;
+}
+    .divSearch input[type=text]:focus {
+        width: 15%;
+        border-radius: 5px;
+        outline: 1px solid;
+        box-shadow: 3px 3px #4fa8c4;
+    }
+    .divSearch input[type=text]:visited {
+        content: "";
+    }
+
+    .questionIcon {
+        color: red;
+        font-size: 18px;
+        margin: 31px 0 0 -6px;
+        animation: blinker 2s infinite; 
+
+    }
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+
+}
+.modalStyle2 {
+    background-color: black;
+    opacity: 0.6;
+    color: white;
+    border-radius: 5px;
+}

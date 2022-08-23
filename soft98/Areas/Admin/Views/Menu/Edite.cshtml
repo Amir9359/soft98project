@@ -1,0 +1,39 @@
+﻿@model soft98.DataAccessLayer.Entities.Category
+
+@{
+    ViewData["Title"] = "ویرایش دسته";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+     <h3 class="pull-right title-h">ویرایش دسته</h3>
+    <h3 class="pull-left">
+        <a asp-action="Index" class="btn-orange">بازگشت</a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 
+        col-sm-offset-0 col-xs-12 col-xs-offset-0">
+    <form asp-action="Edite" class="table-chart">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Name" class="control-label labelStyle"></label>
+            <input asp-for="Name" class="form-control" style="margin-right: 10px;"  />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ParentId" class="control-label labelStyle">دسته</label>
+            <select asp-for="ParentId" class="form-control" asp-items="ViewBag.cat" style="margin-right: 10px;" ></select>
+            <span asp-validation-for="ParentId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="اعمال تغییرات" class="btn btn-orange" />
+        </div>
+    </form>
+</div>
+

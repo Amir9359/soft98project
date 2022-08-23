@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = null;
+}
+
+<form asp-area="Admin" asp-controller="AdminUser" asp-action="DeleteUser">
+    <div asp-validation-summary="ModelOnly" class="text-center"></div>
+    <div class="form-group" style="margin-bottom: 80px !important;">
+        <h3 style="color: black;" class="text-center"> آیا از حذف اطمینان دارید؟</h3>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn-orange pull-right" value="تایید" style="border: none;" />
+        <a asp-controller="AdminUser" asp-action="Index" class="btn-orange pull-left">بازگشت</a>
+    </div>
+</form>
