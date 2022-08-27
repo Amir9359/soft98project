@@ -16,8 +16,8 @@
 <br />
 
 <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
-     col-sm-offset-0 col-xs-12 col-xs-offset-0">
-<table class="table table-chart">
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+<table class="table table-chart-menu">
     <thead>
     <tr>
         <th class="text-center">
@@ -39,8 +39,8 @@
                 @Html.DisplayFor(modelItem => item.Parent.Name)
             </td>
             <td class="text-left">
-                <a asp-action="Edite" asp-route-id="@item.Id" class="btn-xs btn-warning">Edit</a> |
-                <a  href="#" onclick="Delete(@item.Id)" class="btn-xs btn-danger">Delete</a>
+                <a asp-action="Edite" asp-route-id="@item.Id" class="btn-xs btn-warning">ویرایش</a> |
+                <a  href="#" onclick="Delete(@item.Id)" class="btn-xs btn-danger">حذف </a>
             </td>
         </tr>
     }

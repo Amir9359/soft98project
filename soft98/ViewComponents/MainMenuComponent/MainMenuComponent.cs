@@ -16,7 +16,7 @@ namespace soft98.ViewComponents.MainMenuComponent
             _menuRepository = menuRepository;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync ()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             return await Task.FromResult((IViewComponentResult)View("ShowMenuHeader", await _menuRepository.ShowMainMenu()));
         }

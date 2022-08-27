@@ -67,7 +67,7 @@ namespace soft98.Controllers
                         await _userRepository.SaveShanges();
 
                         SMS sms = new SMS();
-                        //sms.Send(user.Phone, "ثبت نام شما انجام شد  کد فعال سازی شما : " + user.Code);
+                        sms.Send(user.Phone, "ثبت نام شما انجام شد  کد فعال سازی شما : " + user.Code);
 
                         ViewBag.mystatus = 2;
                         ViewBag.ModalTitle = "فعال سازی رمز عبور ";
@@ -186,7 +186,7 @@ namespace soft98.Controllers
                 if (user != null)
                 {
                     var sms = new SMS();
-                    //sms.Send(forget.Phone,"کد تایید برای تغییر رمز عبور " + user.Code + " می باشد.");
+                    sms.Send(forget.Phone,"کد تایید برای تغییر رمز عبور " + user.Code + " می باشد.");
                     return View("ResetPassword");
                 }
                 else

@@ -1,0 +1,65 @@
+﻿@model soft98.DataAccessLayer.Entities.Matlab
+
+@{
+    ViewData["Title"] = "ایجاد مطلب";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">ایجاد مطلب</h3>
+    <h3 class="pull-left">
+        <a asp-action="Index" class="btn-orange">بازگشت</a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0">
+    <form asp-action="Create" class="table-chart" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title" class="control-label labelStyle"></label>
+            <input asp-for="Title" class="form-control" style="margin-right: 10px; font-size: 17px;" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label labelStyle"></label>
+            <textarea asp-for="Description" class="form-control" style="margin-right: 10px; font-size: 17px;"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-groupM">
+            <div class="containerM" style="color: #dbd8d8">
+                @Html.DisplayNameFor(model => model.Show)
+                <input type="checkbox" asp-for="Show" >
+                <span class="checkmark"> </span><i class="fa fa-check check-btn" ></i>
+            </div>
+        </div>
+        <div class="form-groupM">
+            <div class="containerM" style="color: #dbd8d8">
+                @Html.DisplayNameFor(model => model.IsSoft)
+                <input type="checkbox" asp-for="IsSoft" >
+                <span class="checkmark"> </span><i class="fa fa-check check-btn" ></i>
+            </div>
+        </div>
+        <div class="form-groupM">
+            <div class="containerM" style="color: #dbd8d8">
+                @Html.DisplayNameFor(model => model.IsMobile)
+                <input type="checkbox" asp-for="IsMobile" >
+                <span class="checkmark"> </span><i class="fa fa-check check-btn" ></i>
+            </div>
+        </div>
+        <div class="form-groupM">
+            <div class="containerM" style="color: #dbd8d8">
+                @Html.DisplayNameFor(model => model.IsTech)
+                <input type="checkbox" asp-for="IsTech" >
+                <span class="checkmark"> </span><i class="fa fa-check check-btn" ></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="ایجاد" class="btn btn-orange" style="margin-right: 10px;"/>
+        </div>
+    </form>
+</div>
+ 

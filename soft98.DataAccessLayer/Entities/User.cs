@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,5 +31,7 @@ namespace soft98.DataAccessLayer.Entities
         public bool IsActive { get; set; }
         [ForeignKey("RoleId")]
         public virtual Role Role { get; set; }
+
+        public virtual ICollection<BannerFactor> BannerFactors { get; set; }
     }
 }

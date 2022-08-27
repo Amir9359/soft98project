@@ -7,5 +7,6 @@ namespace soft98.Core.Interface
     public interface IMainMenuRepository
     {
         Task<List<Category>> ShowMainMenu();
+        Task<List<Matlab>> ShowMatlabs();
     }
 }

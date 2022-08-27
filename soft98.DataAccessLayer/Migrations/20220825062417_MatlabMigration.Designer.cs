@@ -3,101 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using soft98.DataAccessLayer.Context;
 
 namespace soft98.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220825062417_MatlabMigration")]
+    partial class MatlabMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Banner", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PlaceCode")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Banners");
-                });
-
-            modelBuilder.Entity("soft98.DataAccessLayer.Entities.BannerFactor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BannerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ExpireDate")
-                        .HasMaxLength(23)
-                        .HasColumnType("nvarchar(23)");
-
-                    b.Property<string>("FollowNumber")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<bool>("IsExpire")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("OrderNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<int>("PayPrice")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PicLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PicName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("RentDate")
-                        .HasMaxLength(23)
-                        .HasColumnType("nvarchar(23)");
-
-                    b.Property<int?>("SeenNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BannerId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("BannerFactors");
-                });
 
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Category", b =>
                 {
@@ -129,8 +51,8 @@ namespace soft98.DataAccessLayer.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Date")
-                        .HasMaxLength(23)
-                        .HasColumnType("nvarchar(23)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -211,25 +133,6 @@ namespace soft98.DataAccessLayer.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("soft98.DataAccessLayer.Entities.BannerFactor", b =>
-                {
-                    b.HasOne("soft98.DataAccessLayer.Entities.Banner", "Banner")
-                        .WithMany("BannerFactors")
-                        .HasForeignKey("BannerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("soft98.DataAccessLayer.Entities.User", "User")
-                        .WithMany("BannerFactors")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Banner");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Category", b =>
                 {
                     b.HasOne("soft98.DataAccessLayer.Entities.Category", "Parent")
@@ -250,19 +153,9 @@ namespace soft98.DataAccessLayer.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Banner", b =>
-                {
-                    b.Navigation("BannerFactors");
-                });
-
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Role", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("soft98.DataAccessLayer.Entities.User", b =>
-                {
-                    b.Navigation("BannerFactors");
                 });
 #pragma warning restore 612, 618
         }

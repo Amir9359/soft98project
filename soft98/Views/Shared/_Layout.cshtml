@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - soft98</title>
 
     <link href="~/lib/mdb.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="~/css/HomeStyle.css" rel="stylesheet" />
 </head>
@@ -21,7 +22,7 @@
                 {
                     <div class="dropdown pull-left">
                         <a href="#" class="headerIconLogin pull-left"><i class="fa fa-user-circle"></i></a>
-                        <a href="#" class="arrow-header pull-left"><i class="fa fa-sort-down"></i></a>
+                        <a href="#" class="arrow-header pull-left" style="margin: 2px 0 0 -19px;"><i class="fa fa-sort-down" style=" margin: 30px 0 0 -32px;"></i></a>
 
                         <div class="submenu">
                             <p class="wellcome">خوش آمدید</p>
@@ -39,7 +40,7 @@
             }
             <div class="dropdown pull-left">
                 <a href="#" class="pull-left "><i class="fa fa-envelope headerIconLogin" style="margin: 15px 0 0 20px;"></i></a>
-                <a href="#" class="arrow-header pull-left"><i class="fa fa-sort-down"></i></a>
+                <a href="#" class="arrow-header pull-left" style=" margin: 33px 0px 0 -30px;"><i class="fa fa-sort-down"></i></a>
 
                 <div class="submenu">
                     <a href="#"><i class="fas fa-caret-left" style="padding: 5px; float: right;"></i>تماس با ما</a>
@@ -50,20 +51,61 @@
 
 
             @*//////////// منو //////////////*@
-            <div class="col-lg-8" >
-                <a href="/" class="pull-right Home" style="position: relative;top: -25px;">خانه</a>
+            <div class="col-lg-10 hidden-md hidden-sm hidden-xs ">
+                <a href="/" class="pull-right Home" style="position: relative;top: 18px;">خانه</a>
 
                 @(await Component.InvokeAsync("MainMenuComponent"))
 
-                <div class="col-lg-2" style="display: inline-block;">
-                    <div style="margin-top:20px; color: #cccbcb">|</div>
-                    <a href="/favicon.ico" class="pull-right Home" style="position: relative;top: -22px;">تبلیغات</a>
+                <div class="col-lg-2" style="display: inline-block; margin-right: 90px;">
+                    <div style="margin-top:-1px; color: #cccbcb">|</div>
+                    <a href="/favicon.ico" class="pull-right Home" style="position: relative;top: -22px;right: 0px;margin-right: 25px;">تبلیغات</a>
                 </div>
+            </div>
+
+            <div id="MySide" class="sidebar">
+                <a href="javascript:void(0)" class="Closebtn" onclick="CloseNav()">X</a>
+                @(await Component.InvokeAsync("MainMenuComponent"))
+
+            </div>
+            <div id="MainMobile" class=" visible-md visible-sm visible-xs">
+                <button id="openbtn" class="openbtn" onclick="OpenNav()"><i class="fas fa-bars"></i></button>
             </div>
 
         </div>
     </header>
 
+    <div class="Main">
+        <div class="logoMain pull-right">
+            <img src="Images/logo.png" style="padding-top: 20px;"/>
+            <div class="clearfix"></div><br />
+
+            <div class="matlab">
+                <div>
+                    <a class="tablink" href="#" onclick="openPage('soft')" id="defaultopen">
+                        <i class="fa fa-desktop softlogo"></i> مطالب نرم افزار
+                    </a>
+
+
+                    <a class="tablink" href="#" onclick="openPage('mobile')">
+                        <i class="fab fa-android mobilelogo"></i> مطالب اندروید
+                    </a>
+
+                    <div class="tech-wrap">
+                        <a class="tabTech pull-right" href="#">
+                            <i class="fas fa-newspaper techlogo"></i> خبر های تکنولوژی
+                        </a>
+                        <div class="pull-left titleTech">
+                            <a class="iconTech" href="#"><i class="fab fa-instagram insta"></i></a>
+                            <a class="iconTech" href="#"><i class="fab fa-twitter twit"></i></a>
+                            <a class="iconTech" href="#"><i class="fab fa-facebook-f face"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                @(await Component.InvokeAsync("MatalebComponent"))
+            </div>
+        </div>
+    </div>
     <div>
         @RenderBody()
     </div>
@@ -121,6 +163,7 @@
 
     <script src="~/lib/jQuery/jquery-1.10.2.min.js"></script>
     <script src="~/lib/mdb.min.js"></script>
+    <script src="~/js/SiteScript.js"></script>
 
     @RenderSection("Scripts", required: false)
     <script>

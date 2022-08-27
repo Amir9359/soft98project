@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -119,6 +120,124 @@ namespace soft98.Core.Services
                 return false;
             }
 
+        }
+        /// <summary>
+        /// /Matlab
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Matlab>> ShowMatlabs()
+        {
+            var matlabs = await _context.Matlabs.OrderBy(d => d.Date).ToListAsync();
+            return matlabs;
+        }
+
+        public async Task<Matlab> ShowMatlabbyId(int id)
+        {
+            var matlab = await _context.Matlabs.SingleOrDefaultAsync(s => s.Id == id);
+            return matlab;
+        }
+
+        public async Task<bool> UpdateMatlab(int id, string title, string description, bool show, bool isSoft, bool isMobile, bool isTech)
+        {
+            var matlab = await _context.Matlabs.FindAsync(id);
+            if (matlab != null)
+            {
+                matlab.Title = title;
+                matlab.Description = description;
+                matlab.Show = show;
+                matlab.IsSoft = isSoft;
+                matlab.IsMobile = isMobile;
+                matlab.IsTech = isTech;
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            
+        }
+
+        public async Task<bool> DeleteMatlab(int id)
+        {
+            var matlab = await _context.Matlabs.FindAsync(id);
+            if (matlab != null)
+            {
+                _context.Matlabs.Remove(matlab);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task  AddMatlab(Matlab matlab)
+        {
+ 
+            await _context.Matlabs.AddAsync(matlab);
+ 
+        }
+
+        public async Task<List<Banner>> ShowBanner()
+        {
+            var Banner = await _context.Banners.OrderBy(d => d.PlaceCode).ToListAsync();
+            return Banner;
+        }
+
+        public async Task<bool> AddBanner(Banner banner)
+        {
+           var res = await _context.Banners.AddAsync(banner);
+           return true;
+        }
+
+        public async Task<bool> RemoveBanner(int id)
+        {
+            var banner = await _context.Banners.FindAsync(id);
+            if (banner != null)
+            {
+                 _context.Remove(banner);
+                 return true;
+            }
+            else
+            {
+                 return false;
+            }
+        }
+
+        public async Task<bool> UpdateBanner(int id, string placeCode, string description, int price, bool IsActive)
+        {
+
+            var banner = await _context.Banners.FindAsync(id);
+            if (banner != null)
+            {
+
+                banner.PlaceCode = placeCode;
+                banner.Description = description;
+                banner.Price = price;
+                banner.IsActive = IsActive;
+
+                _context.Banners.Update(banner);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<Banner> ShowBannerById(int id)
+        {
+            var banner = await _context.Banners.FindAsync(id);
+            if (banner != null)
+            {
+                return banner;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

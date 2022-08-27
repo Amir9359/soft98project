@@ -19,7 +19,12 @@ namespace soft98.Core.Services
 
         public async Task<List<Category>> ShowMainMenu()
         {
-            return await _context.Categories.Where(s => s.ParentId == null).ToListAsync();
+            return await _context.Categories.ToListAsync();
+        }
+
+        public async Task<List<Matlab>> ShowMatlabs()
+        {
+            return  await _context.Matlabs.ToListAsync();
         }
     }
 }

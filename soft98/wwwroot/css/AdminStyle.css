@@ -25,8 +25,19 @@ a {
     background-color: white;
     opacity: 0.7;
 }
-
-.headnavLeft {
+.table-chart-menu {
+    margin: 0 365px 0 141px;
+    width: 80% !important;
+}
+.table-chart-matlab {
+    margin: 0 365px 0 141px;
+    width: 80% !important;
+}
+.table-chart-detail {
+    width: 80%;
+    margin-right: 380px;
+}
+    .headnavLeft {
     float: left;
     margin: 10px 0 0 20px;
     color: black;
@@ -63,7 +74,7 @@ a {
     .sidebar a {
         padding: 16px 18px 16px 16px;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 18px;
         color: black;
         display: block;
     }
@@ -244,7 +255,7 @@ thead tr:hover:nth-child(1) {
         text-decoration: none;
     }
 .labelStyle {
-    font-size: 22px;
+    font-size: 20px;
     margin: 0 10px 10px 0;
     width: 30% !important;
     color: #dbd8d8;
@@ -255,4 +266,92 @@ thead tr:hover:nth-child(1) {
 .table-chart {
     margin: 0 236px 0 141px;
     width: 80% !important;
+}
+
+
+/*/////////// checkBox  ///////////*/
+
+.containerM {
+    display: block;
+    position: relative;
+    margin: 30px 20px;
+    cursor: pointer;
+    font-size: 17px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+    .containerM input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 20px;
+        width: 26px;
+        right: 150px;
+        z-index: 1;
+    }
+.form-groupM {
+    margin-bottom: 15px;
+}
+.check-btn {
+    right: 153px;
+    opacity: 0;
+    top: 4px;
+    position: absolute;
+    font-size: 16px;
+}
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    right: 150px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.containerM:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerM input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+ 
+/* Show the checkmark when checked */
+.containerM input:checked ~ .check-btn {
+    opacity: 1;
+}
+
+/* Style the checkmark/indicator */
+ 
+@media screen and (max-width: 870px) {
+    .table-chart-menu {
+        max-width: 70%;
+        margin-right: 240px;
+    }
+    .table-chart-matlab {
+        max-width: 70%;
+        margin-right: 180px;
+    }
+    .table-chart-detail {
+        max-width: 70%;
+        margin-right: 200px;
+    }
+}
+@media screen and (max-width: 500px) {
+.table-chart-matlab {
+    font-size: 12px
+}
+    .btn-orange {
+        font-size: 13px;
+    }
+    .btn-wrapp {
+        margin-right: 100px
+    }
 }

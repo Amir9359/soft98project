@@ -20,5 +20,25 @@ namespace soft98.Core.Interface
         Task<int> AddCategory(Category category);
         Task<bool> UpdateCategory(int id, string name, int? Parent);
         Task<bool> RemoveCategory(int id);
+
+
+        //////////////////////////////
+        Task<List<Matlab>> ShowMatlabs();
+        Task<Matlab> ShowMatlabbyId(int id);
+
+        Task<bool> UpdateMatlab(int id, string title, string description, bool show, bool isSoft, bool isMobile,
+            bool isTech);
+
+        Task<bool> DeleteMatlab(int id);
+        Task  AddMatlab(Matlab matlab);
+
+        ////////////////////////////
+
+        Task<List<Banner>> ShowBanner();
+        Task<bool> AddBanner(Banner banner);
+        Task<bool> RemoveBanner(int id);
+        Task<bool> UpdateBanner(int id, string placeCode, string description, int price, bool IsActive);
+        Task<Banner> ShowBannerById(int id);
+
     }
 }
