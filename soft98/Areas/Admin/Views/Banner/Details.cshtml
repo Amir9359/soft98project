@@ -1,0 +1,54 @@
+﻿@model soft98.DataAccessLayer.Entities.Banner
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">جزئیات بنر</h3>
+    <h3 class="pull-left">
+        <a asp-action="Create" class="btn-orange">ایجاد بنر</a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+    <dl class="dl-horizontal table-chart-detail">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceCode)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.PlaceCode)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>
+</div>
+<div style="display: inline-block; margin-right:260px " class="btn-wrapp">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-orange">تغییر بنر</a> |
+    <a asp-action="Index" class="btn-orange">بازگشت</a>
+</div>

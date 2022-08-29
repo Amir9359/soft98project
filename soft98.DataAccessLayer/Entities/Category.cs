@@ -21,5 +21,6 @@ namespace soft98.DataAccessLayer.Entities
         [Display(Name = "نام سردسته")]
         public int? ParentId { get; set; }
         public virtual Category Parent { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

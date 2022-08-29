@@ -8,5 +8,6 @@ namespace soft98.Core.Interface
     {
         Task<List<Category>> ShowMainMenu();
         Task<List<Matlab>> ShowMatlabs();
+        Task<BannerFactor> ShowFactorBannerCode(string code);
     }
 }

@@ -239,5 +239,83 @@ namespace soft98.Core.Services
                 return null;
             }
         }
+
+        public async Task<List<BannerFactor>> ShowFactorBanner()
+        {
+            var factorBanners = await _context.BannerFactors.OrderBy(o => o.RentDate).ToListAsync();
+            return factorBanners;
+        }
+
+        public async Task<BannerFactor> ShowFactorById(int id)
+        {
+            var factorBanner = await _context.BannerFactors.FindAsync(id);
+            return factorBanner;
+        }
+
+        public async Task<bool> RemoveFactorBanner(int id)
+        {
+            var bannerFactor = await _context.BannerFactors.FindAsync(id);
+            if (bannerFactor != null)
+            {
+                _context.BannerFactors.Remove(bannerFactor);
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<List<Product>> ShowProduct()
+        {
+            var Products = await _context.Products.OrderBy(s => s.Category).Include(d => d.Category)
+                .ToListAsync();
+            return Products;
+        }
+        public async Task<Product> ShowProductById(int id)
+        {
+            var Product = await _context.Products.Include(d => d.Category)
+                .SingleOrDefaultAsync(s => s.Id == id);
+            return Product;
+        }
+        public async Task<bool> AddProduct(Product product)
+        {
+            if (product != null)
+            {
+              await  _context.Products.AddAsync(product);
+              return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> RemoveProduct(int id)
+        {
+            var Product = await _context.Products.FindAsync(id);
+            if (Product != null)
+            {
+                _context.Products.Remove(Product);
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> UpdateProduct(int id,int CatId , string name, string description, string picName, string InstallDescription)
+        {
+            var Product = await _context.Products.FindAsync(id);
+            if (Product != null)
+            {
+                Product.CategoryId = CatId;
+                Product.Name = name;
+                Product.Description = description;
+                Product.PicName = picName;
+                Product.UpdateDate = DateTime.Now.ToShortDateString();
+                Product.InstallDescription = InstallDescription;
+
+                _context.Products.Update(Product);
+                return true;
+            }
+            return false;
+        }
+
+     
     }
 }

@@ -1,0 +1,87 @@
+﻿@model soft98.DataAccessLayer.Entities.BannerFactor
+
+@{
+    ViewData["Title"] = "جزئیات فاکتور بنر";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">جزئیات بنر</h3>
+    <h3 class="pull-left">
+        <a asp-action="Index" class="btn-orange">بازگشت</a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+    <dl class="dl-horizontal table-chart-detail">
+        <dt  >
+            @Html.DisplayNameFor(model => model.RentDate)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.RentDate)
+        </dd>
+        <hr/>
+        <dt >
+            @Html.DisplayNameFor(model => model.ExpireDate)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.ExpireDate)
+        </dd>
+        <hr/>
+        <dt >
+            @Html.DisplayNameFor(model => model.PayPrice)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.PayPrice)
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.FollowNumber)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.FollowNumber)
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.IsExpire)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.IsExpire)
+        </dd>
+        <hr/>
+        <dt >
+            @Html.DisplayNameFor(model => model.SeenNumber)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.SeenNumber)
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.PicName)
+        </dt>
+        <dd class="text-center">
+            <img src="/Images/@Model.PicName" class="img-responsive center-block" width="40" height="40" />
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.PicLink)
+        </dt>
+        <dd class="textce">
+            @Html.DisplayFor(model => model.PicLink)
+        </dd>
+        <hr/>
+
+    </dl>
+</div>
+ 

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<soft98.DataAccessLayer.Entities.BannerFactor>
+
+@{
+    ViewData["Title"] = "نمایش فاکتور بنر";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">نمایش فاکتور بنر</h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+<table class="table table-chart-factor">
+    <thead>
+    <tr>
+        <th style="width: 20%" class="text-center">
+            @Html.DisplayNameFor(model => model.RentDate)
+        </th>
+        <th style="width: 20%" class="text-center">
+            @Html.DisplayNameFor(model => model.ExpireDate)
+        </th>
+        <th style="width: 20%" class="text-center">
+            @Html.DisplayNameFor(model => model.PayPrice)
+        </th>
+ 
+        <th style="width: 5%" class="text-center">
+            @Html.DisplayNameFor(model => model.IsExpire)
+        </th>
+        <th style="width: 15%" class="text-center">
+            @Html.DisplayNameFor(model => model.PicName)
+        </th>
+ 
+        <th style="width: 20%" class="text-center">عملیات</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td style="width: 20%" class="text-center">
+                @Html.DisplayFor(modelItem => item.RentDate)
+            </td>
+            <td style="width: 20%" class="text-center">
+                @Html.DisplayFor(modelItem => item.ExpireDate)
+            </td>
+            <td style="width: 20%" class="text-center">
+                @Html.DisplayFor(modelItem => item.PayPrice)
+            </td>
+ 
+            <td style="width: 5%" class="text-center">
+                @Html.DisplayFor(modelItem => item.IsExpire)
+            </td>
+            <td style="width: 15%" class="text-center">
+               <img src="/Images/@item.PicName" class="img-responsive center-block" width="40" height="40" />
+            </td>
+
+            <td style="width: 20%" class="text-center">
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn-xs btn-warning">Details</a> |
+                <a href="#" onclick="DeleteM(@item.Id)" class="btn-xs btn-danger">حذف</a>
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="bodymodal" class="modal-body">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function DeleteM(id) {
+        $.ajax({
+            url: "/Admin/FactorBanner/Delete/" + id,
+            type: "Get",
+            data: {}
+        }).done(function (result) {
+            $('#myModal').modal('show');
+            $('#myModalHeader').html('');
+            $('#bodymodal').html(result);
+        });
+    }
+</script>

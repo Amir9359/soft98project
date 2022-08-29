@@ -40,5 +40,19 @@ namespace soft98.Core.Interface
         Task<bool> UpdateBanner(int id, string placeCode, string description, int price, bool IsActive);
         Task<Banner> ShowBannerById(int id);
 
+        ///////////////////////////////////
+        Task<List<BannerFactor>> ShowFactorBanner();
+        Task<BannerFactor> ShowFactorById(int id);
+        Task<bool> RemoveFactorBanner(int id);
+
+        ////////////////////Product////////////
+        Task<List<Product>> ShowProduct();
+        Task<bool> AddProduct(Product product);
+        Task<bool> RemoveProduct(int id);
+
+        Task<bool> UpdateProduct(int id, int CatId, string name, string description, string picName,
+            string InstallDescription);
+        Task<Product> ShowProductById(int id);
+
     }
 }

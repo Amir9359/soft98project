@@ -9,6 +9,10 @@ namespace soft98.Core.Infrastructure
         {
             return Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6);
         }
+        public static string ProductCode()
+        {
+            return Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6);
+        }
 
     }
 }

@@ -1,0 +1,77 @@
+﻿@model soft98.DataAccessLayer.Entities.Product
+
+@{
+    ViewData["Title"] = "جزئیات محصول";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">جزئیات محصول</h3>
+    <h3 class="pull-left">
+        <a asp-action="Create" class="btn-orange">ایجاد محصول</a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+    <dl class="dl-horizontal table-chart-detail" >
+
+        <dt  >
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "text-center">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <hr/>
+        <dt >
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "text-center">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <hr/>
+        <dt >
+            @Html.DisplayNameFor(model => model.PicName)
+        </dt>
+        <dd class = "text-center">
+            <img src="~/Images/@Model.PicName" class="center-block" height="40" width="40" />
+        </dd>
+        <hr/>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+        <dd class = "text-center">
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+        <hr/>
+        <dt >
+            @Html.DisplayNameFor(model => model.InstallDescription)
+        </dt>
+        <dd class="text-center">
+            @Html.Raw(@Model.InstallDescription)
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.SeenCount)
+        </dt>
+        <dd class = "text-center">
+            @Html.DisplayFor(model => model.SeenCount)
+        </dd>
+        <hr/>
+        <dt  >
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "text-center">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <hr/>
+    </dl>
+</div>
+<div style="display: inline-block; margin-right: 260px; margin-bottom: 55px " class="btn-wrapp">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-orange">تغییر محصول</a> |
+    <a asp-action="Index" class="btn-orange">بازگشت</a>
+</div>
+

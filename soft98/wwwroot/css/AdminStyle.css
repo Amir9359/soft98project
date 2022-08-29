@@ -37,6 +37,10 @@ a {
     width: 80%;
     margin-right: 380px;
 }
+.table-chart-factor {
+    margin: 0 365px 0 141px;
+    width: 80% !important;
+}
     .headnavLeft {
     float: left;
     margin: 10px 0 0 20px;
@@ -79,26 +83,26 @@ a {
         display: block;
     }
 
-.sidebar a:hover {
-    color: black;
-    text-decoration: none;
-    background-color: #ff6a00;
-    transition: 0.5s;
-}
+        .sidebar a:hover {
+            color: black;
+            text-decoration: none;
+            background-color: #6ad1ee;
+            transition: 0.5s;
+        }
 
-.sidebar a:focus {
-    color: black;
-    text-decoration: none;
-    background-color: #ff6a00;
-    transition: 0.5s;
-}
+        .sidebar a:focus {
+            color: black;
+            text-decoration: none;
+            background-color: #6ad1ee;
+            transition: 0.5s;
+        }
 
-.sidebar a:after {
-    color: black;
-    background-color: #ff6a00;
-    text-decoration: none;
-    transition: 0.5s;
-}
+        .sidebar a:after {
+            color: black;
+            background-color: #6ad1ee;
+            text-decoration: none;
+            transition: 0.5s;
+        }
 
 .sidestyle::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px transparent;
@@ -126,6 +130,7 @@ a {
 
 .imgage1 {
     position: fixed;
+    user-select: none;
 }
 
 .headNavRight {
@@ -226,9 +231,13 @@ table , dl {
 }
 
 tr:hover {
-    background-color: #dbd8d8;
+    background-color: #999;
     color: #051c2c;
 }
+    tr:hover:nth-child(2n +1) {
+        background-color: cadetblue;
+        color: #051c2c;
+    }
 thead tr:hover:nth-child(1) {
     background-color: transparent;
     color: #dbd8d8;
@@ -241,13 +250,29 @@ thead tr:hover:nth-child(1) {
 .btn-orange {
     background-color: #ff6a00;
     color: #051c2c;
-    padding: 5px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
-    font-size: 20px;
-    width: 20% !important;
+    font-size: 18px;
+    line-height: 1.2;
+    white-space: nowrap;
     top: 20px;
     position: relative;
     text-align: center;
+    display: inline-block;
+    transition: .2s;
+}
+.btn-orangeM {
+    background-color: #ff6a00;
+    color: #051c2c;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 1.2;
+    white-space: nowrap;
+    top: 20px;
+    position: relative;
+    text-align: center;
+    display: block;
     transition: .2s;
 }
     .btn-orange:hover {
@@ -258,7 +283,7 @@ thead tr:hover:nth-child(1) {
     font-size: 20px;
     margin: 0 10px 10px 0;
     width: 30% !important;
-    color: #dbd8d8;
+    color: #d0d0d0;
 }
 /*.main {
     margin: -600px 250px 0 50px;
@@ -268,7 +293,9 @@ thead tr:hover:nth-child(1) {
     width: 80% !important;
 }
 
-
+.iconstyle {
+    margin-left: 7px;
+}
 /*/////////// checkBox  ///////////*/
 
 .containerM {
@@ -310,6 +337,7 @@ thead tr:hover:nth-child(1) {
     right: 150px;
     height: 25px;
     width: 25px;
+    border-radius: 3px;
     background-color: #eee;
 }
 
@@ -333,25 +361,57 @@ thead tr:hover:nth-child(1) {
 @media screen and (max-width: 870px) {
     .table-chart-menu {
         max-width: 70%;
-        margin-right: 240px;
+        margin-right: 180px;
     }
     .table-chart-matlab {
         max-width: 70%;
         margin-right: 180px;
     }
-    .table-chart-detail {
-        max-width: 70%;
-        margin-right: 200px;
+    .table-chart {
+        margin: 0 15px 0 141px !important;
+        width: 70% !important;
     }
+        .table-chart .form-group .btn-orange {
+            width: 70% !important;
+            margin-right: 18% !important;
+        }
+        .table-chart-detail {
+            max-width: 70%;
+            margin-right: 200px;
+        }
 }
 @media screen and (max-width: 500px) {
-.table-chart-matlab {
-    font-size: 12px
-}
-    .btn-orange {
+    .table-chart-matlab {
+        font-size: 12px;
+        margin-right: 150px;
+    }
+    .table-chart-menu {
+        font-size: 12px;
+        margin-right: 130px;
+        width: 100% !important;
+    }
+    .table-chart-factor {
+        font-size: 12px;
+        margin-right: 120px;
+    }
+        .btn-orange {
         font-size: 13px;
+        width: 100% !important;
+        line-height: 1.5;
+        display: block;
+    }
+    .btn-orangeM {
+        font-size: 13px;
+        width: 30% !important;
+        line-height: 1.5;
     }
     .btn-wrapp {
         margin-right: 100px
+    }
+ 
+
+    .title-h {
+        margin: 45px 0 40px 0;
+        font-size: 14px;
     }
 }

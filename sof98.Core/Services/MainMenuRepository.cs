@@ -26,5 +26,12 @@ namespace soft98.Core.Services
         {
             return  await _context.Matlabs.ToListAsync();
         }
+
+        public async Task<BannerFactor> ShowFactorBannerCode(string code)
+        {
+            var FactorBanner = await _context.BannerFactors.Include(d => d.Banner)
+                .FirstOrDefaultAsync(s => s.Banner.PlaceCode == code && s.IsExpire == false);
+            return FactorBanner;
+        }
     }
 }

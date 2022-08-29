@@ -160,6 +160,45 @@ namespace soft98.DataAccessLayer.Migrations
                     b.ToTable("Matlabs");
                 });
 
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstallDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PicName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("SeenCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateDate")
+                        .HasMaxLength(23)
+                        .HasColumnType("nvarchar(23)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -239,6 +278,17 @@ namespace soft98.DataAccessLayer.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Product", b =>
+                {
+                    b.HasOne("soft98.DataAccessLayer.Entities.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.User", b =>
                 {
                     b.HasOne("soft98.DataAccessLayer.Entities.Role", "Role")
@@ -253,6 +303,11 @@ namespace soft98.DataAccessLayer.Migrations
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Banner", b =>
                 {
                     b.Navigation("BannerFactors");
+                });
+
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Role", b =>

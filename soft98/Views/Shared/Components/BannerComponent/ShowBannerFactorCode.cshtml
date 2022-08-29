@@ -1,0 +1,14 @@
+﻿@model soft98.DataAccessLayer.Entities.BannerFactor
+
+@if (Model != null)
+{
+    if (Model.IsExpire == false)
+    {
+        <a href="@Model.PicLink" target="_blank"><img  src="Images/@Model.PicName" style="width: 307px;height: 249px;"/> </a>
+    }
+  
+}
+else
+{
+    <p class="text-center" style="margin-top: 35%; font-size: 25px;">جایگاه تبلیغ شما </p>
+}
