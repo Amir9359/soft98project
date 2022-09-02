@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using soft98.Core.Interface;
 using soft98.DataAccessLayer.Context;
 using soft98.DataAccessLayer.Entities;
+using soft98.DataAccessLayer.Migrations;
 
 namespace soft98.Core.Services
 {
@@ -280,8 +281,8 @@ namespace soft98.Core.Services
         {
             if (product != null)
             {
-              await  _context.Products.AddAsync(product);
-              return true;
+                await _context.Products.AddAsync(product);
+                return true;
             }
 
             return false;
@@ -298,7 +299,7 @@ namespace soft98.Core.Services
             return false;
         }
 
-        public async Task<bool> UpdateProduct(int id,int CatId , string name, string description, string picName, string InstallDescription)
+        public async Task<bool> UpdateProduct(int id, int CatId, string name, string description, string picName, string InstallDescription)
         {
             var Product = await _context.Products.FindAsync(id);
             if (Product != null)
@@ -307,7 +308,7 @@ namespace soft98.Core.Services
                 Product.Name = name;
                 Product.Description = description;
                 Product.PicName = picName;
-                Product.UpdateDate = DateTime.Now.ToShortDateString();
+                Product.UpdateDate = PersianDateTime.Now.ToString("yyyy/MM/dd");
                 Product.InstallDescription = InstallDescription;
 
                 _context.Products.Update(Product);
@@ -316,6 +317,53 @@ namespace soft98.Core.Services
             return false;
         }
 
-     
+        public async Task<List<ProductDownloadFile>> ShowProductDownload()
+        {
+            var ProductDownloads = await _context.ProductDownloadFiles.Include(d => d.Product)
+                .ToListAsync();
+            return ProductDownloads;
+        }
+
+        public async Task<ProductDownloadFile> ShowProductDownloadById(int id)
+        {
+            var ProductDownload = await _context.ProductDownloadFiles.Include(d => d.Product).
+                SingleOrDefaultAsync(s => s.Id == id);
+  
+            return ProductDownload;
+        }
+
+        public async Task<bool> AddProductDownload(ProductDownloadFile productDownload)
+        {
+           var res = await _context.ProductDownloadFiles.AddAsync(productDownload);
+           return true;
+        }
+
+        public async Task<bool> RemoveProductDownload(int id)
+        {
+            var ProductDownload = await _context.ProductDownloadFiles.FindAsync(id);
+            if (ProductDownload != null)
+            {
+                _context.ProductDownloadFiles.Remove(ProductDownload);
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> UpdateProductDownload(int id, int ProductId, string Productink, string fileName, string volume)
+        {
+            var ProductDownload = await _context.ProductDownloadFiles.FindAsync(id);
+            if (ProductDownload != null)
+            {
+                ProductDownload.ProductId = ProductId;
+                ProductDownload.Productlink = Productink;
+                ProductDownload.FileName = fileName;
+                ProductDownload.Volume = volume;
+
+                _context.ProductDownloadFiles.Update(ProductDownload);
+                return true;
+            }
+            return false;
+        }
     }
 }

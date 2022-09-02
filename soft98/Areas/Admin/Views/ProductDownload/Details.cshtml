@@ -1,0 +1,62 @@
+﻿@model soft98.DataAccessLayer.Entities.ProductDownloadFile
+
+@{
+    ViewData["Title"] = "جزئیات فایل دانلود";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">جزئیات فایل دانلود</h3>
+    <h3 class="pull-left">
+        <a asp-action="Create" class="btn-orange">ایجاد فایل دانلود</a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+    <dl class="dl-horizontal table-chart-detail">
+        <dt>
+            @Html.DisplayNameFor(model => model.Productlink)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.Productlink)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.Volume)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadCount)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.DownloadCount)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Product)
+        </dt>
+        <dd class="text-center">
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+    </dl>
+</div>
+<div style="display: inline-block; margin-right: 260px; margin-bottom: 55px " class="btn-wrapp">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-orange">تغییر محصول</a> |
+    <a asp-action="Index" class="btn-orange">بازگشت</a>
+</div>
+
+

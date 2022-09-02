@@ -1,0 +1,57 @@
+﻿@model soft98.DataAccessLayer.Entities.Product
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="softwareDet">
+    <div class="title-adverb">
+        <i class="fa fa-pause" style="color: darkgray; padding: 5px;"></i>
+        @Model.Name
+    </div>
+    <div class="seen">
+        <div class="pull-right" style=" font-size: 13px; position: relative; top: 7px;">
+            <i class="fa fa-eye" style="color: darkgray; padding: 5px;"></i>
+            @Model.SeenCount بازدید
+        </div>
+        <div class="pull-left" style="position: relative;top: -15px;left: 10px;">
+            @Model.UpdateDate
+        </div>
+    </div>
+    <div style="display: grid; width: 98%;" >
+        <div  class="product-wrap">
+            <div class="product-content pull-right" style="grid-area: descrip;">
+                @Model.Description
+            </div>
+            <div class="pull-left" style="grid-area: pic;"  >
+                <img src="/Images/@Model.PicName"  style="padding-top: 20px; width: 100px; height: 130px; position: absolute; left: 22px;" />
+            </div>
+            <div class="install" >
+                @Html.Raw(@Model.InstallDescription)
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns:1fr;">
+
+            <div class="center-block support">
+                <p style="font-size: 14px; line-height: 1.5; text-align: center;">در صورت مشکل در نصب نرم‌افزار و یا هر مشکلی در زمینه کامپیوتر و موبایل با شماره پشتیبانی 0922222222 از سراسر کشور با تلفن ثابت تماس بگیرید.برای تماس با تلفن همراه و استفاده از تخفیف 40درصدی به سایت پشتیبانی تماس بیگرید.</p>
+            </div>
+            <div class="text-center down">
+                <i class="fas fa-cloud-download-alt" style="padding-left: 10px"></i>
+                لیست دانلود ها
+            </div>
+            <div class="list-Download">
+                <div class="version">
+                    <i class="fas fa-download" style="padding-left: 10px"></i>
+                    ورژن ها
+                </div>
+                @(await Component.InvokeAsync("ProductFileDownloadComponnet", Model.Id))
+
+                <div class="pass">
+                    <i class="fas fa-lock" style="padding-left: 10px"></i>
+                    پسورد فایل فشرده : soft98.ir
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

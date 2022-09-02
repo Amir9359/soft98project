@@ -48,5 +48,7 @@ namespace soft98.DataAccessLayer.Entities
         [ForeignKey("CategoryId")]
         public virtual  Category Category { get; set; }
 
+        public virtual ICollection<ProductDownloadFile> ProductDownloadFiles { get; set; }
+
     }
 }

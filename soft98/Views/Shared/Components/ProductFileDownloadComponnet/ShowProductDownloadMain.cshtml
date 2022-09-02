@@ -1,0 +1,15 @@
+﻿@model IEnumerable<soft98.DataAccessLayer.Entities.ProductDownloadFile>
+
+ @foreach (var  item in Model)
+ {
+     <div>
+         <a asp-action="UpdateNumberDownload" asp-route-Id="@item.Id" target="_blank" >
+             <i class="fas fa-arrow-alt-circle-left" style="padding: 10px;"></i>
+             @item.Productlink با حجم @item.Volume
+         </a>
+         <div style="margin-right: 15px;">
+             تعداد دانلود :  @item.DownloadCount
+         </div>
+         <hr />
+     </div>
+ }

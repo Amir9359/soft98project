@@ -199,6 +199,38 @@ namespace soft98.DataAccessLayer.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.ProductDownloadFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DownloadCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Productlink")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("Volume")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductDownloadFiles");
+                });
+
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -289,6 +321,17 @@ namespace soft98.DataAccessLayer.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.ProductDownloadFile", b =>
+                {
+                    b.HasOne("soft98.DataAccessLayer.Entities.Product", "Product")
+                        .WithMany("ProductDownloadFiles")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.User", b =>
                 {
                     b.HasOne("soft98.DataAccessLayer.Entities.Role", "Role")
@@ -308,6 +351,11 @@ namespace soft98.DataAccessLayer.Migrations
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Product", b =>
+                {
+                    b.Navigation("ProductDownloadFiles");
                 });
 
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Role", b =>

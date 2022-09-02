@@ -19,5 +19,6 @@ namespace soft98.DataAccessLayer.Context
         public DbSet<Banner> Banners { get; set; }
         public DbSet<BannerFactor> BannerFactors { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductDownloadFile> ProductDownloadFiles { get; set; }
     }
 }

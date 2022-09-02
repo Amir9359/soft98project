@@ -14,7 +14,7 @@ namespace soft98.Core.Interface
         Task<bool> SaveChanges();
 
         //////////////////////////////
-        
+
         Task<List<Category>> getCategories();
         Task<Category> GetCategory(int id);
         Task<int> AddCategory(Category category);
@@ -30,7 +30,7 @@ namespace soft98.Core.Interface
             bool isTech);
 
         Task<bool> DeleteMatlab(int id);
-        Task  AddMatlab(Matlab matlab);
+        Task AddMatlab(Matlab matlab);
 
         ////////////////////////////
 
@@ -53,6 +53,14 @@ namespace soft98.Core.Interface
         Task<bool> UpdateProduct(int id, int CatId, string name, string description, string picName,
             string InstallDescription);
         Task<Product> ShowProductById(int id);
+
+        ///////////////////////////////////
+        Task<List<ProductDownloadFile>> ShowProductDownload();
+        Task<ProductDownloadFile> ShowProductDownloadById(int id);
+        Task<bool> AddProductDownload(ProductDownloadFile productDownload);
+        Task<bool> RemoveProductDownload(int id);
+
+        Task<bool> UpdateProductDownload(int id, int ProductId, string Productink, string fileName, string volume);
 
     }
 }

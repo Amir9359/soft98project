@@ -14,12 +14,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="PersianDateTime" Version="1.1.5082.36395" />
     <PackageReference Include="reCAPTCHA.AspNetCore" Version="3.0.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\sof98.Core\soft98.Core.csproj" />
     <ProjectReference Include="..\soft98.DataAccessLayer\soft98.DataAccessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Files\" />
   </ItemGroup>
 
 </Project>

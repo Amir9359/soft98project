@@ -1,0 +1,100 @@
+﻿@model IEnumerable<soft98.DataAccessLayer.Entities.ProductDownloadFile>
+
+@{
+    ViewData["Title"] = "نمایش فایل های دانلود";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-top: 50px;">
+    <h3 class="pull-right title-h">نمایش فایل های دانلود</h3>
+    <h3 class="pull-left">
+        <a asp-action="Create" class="btn-orange"> ایجاد فایل دانلود </a>
+    </h3>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12
+     col-sm-offset-0 col-xs-12 col-xs-offset-0" style="margin-right: -135px;">
+    <table class="table table-chart-menu">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Productlink)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Volume)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.DownloadCount)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Product)
+                </th>
+                <th class="text-center"> عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Productlink)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Volume)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.DownloadCount)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td class="text-left">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-xs btn-warning">تغییر</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn-xs btn-info">جزئیات</a> |
+                        <a href="#" onclick="Delete(@item.Id)" class="btn-xs btn-danger">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="bodymodal" class="modal-body">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function Delete(id) {
+        $.ajax({
+            url: "/Admin/ProductDownload/Delete/" + id ,
+            type: "Get",
+            data: {}
+        }).done(function (result) {
+            $('#myModal').modal('show');
+            $('#myModalHeader').html('');
+            $('#bodymodal').html(result);
+        });
+    }
+</script>
