@@ -1,0 +1,43 @@
+﻿@model soft98.DataAccessLayer.Entities.BannerFactor
+
+@{
+    ViewData["Title"] = "نتیجه تراکنش";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+<div class="mainpage">
+<div class="logo pull-right "><img src="~/Images/logo.png" /></div><br />
+<div class="register col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+    <div class="registerInner">
+        <i class="pull-right fas fa-pause pause"></i><div class="textregister">نتیجه تراکنش</div>
+        <hr class="line" />
+        @if (ViewBag.IsOk == true)
+        {
+            <div class="alert alert-success">
+                <h4 class="text-center"> پرداخت با موفقیت انجام شد </h4>
+                <br/>
+                <h4 class="text-center"> شماره سفارش : @Model.OrderNumber </h4>
+                <br/>
+                <h4 class="text-center">  شماره پیگیری : @Model.FollowNumber </h4>
+                <br/>
+                <h4 class="text-center">از تاریخ  : @Model.RentDate </h4>
+                <br/>
+                <h4 class="text-center">تا تاریخ  : @Model.ExpireDate </h4>
+                <br/>
+            </div>
+
+            <div class="clearfix"></div>
+            <a asp-action="Edit" asp-controller="Home" class="btn btn-block btn-success"> ادامه و اختصاص بنر</a>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                <h4 class="text-center"> تراکنش شما لغو شد .</h4>
+            </div>
+        }
+    </div>
+</div>
+ 
+</div>
+

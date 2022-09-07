@@ -57,7 +57,7 @@ namespace soft98.Areas.Admin.Controllers
                     }
 
                     product.SeenCount = 0;
-                    product.UpdateDate = PersianDateTime.Now.ToString("yyyy/MM/dd");
+                    product.UpdateDate = PersianDateTime.Now.ToString("dddd d MMMM yyyy");
 
                     await _adminRepository.AddProduct(product);
                     await _adminRepository.SaveChanges();

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<soft98.DataAccessLayer.Entities.Product>
+
+@{
+    ViewData["Title"] = "نتایج جستجو";
+    Layout = "_Layout";
+}
+
+<div class="softwares">
+
+    @foreach (var item in Model)
+    {
+        <div class="software">
+            <div class="title-adverb">
+                <i class="fa fa-pause" style="color: darkgray; padding: 5px;"></i>
+                @item.Name
+            </div>
+            <div class="seen">
+                <div class="pull-right" style=" font-size: 13px; position: relative; top: 7px;">
+                    <i class="fa fa-eye" style="color: darkgray; padding: 5px;"></i>
+                    @item.SeenCount بازدید
+                </div>
+                <div class="pull-left" style="position: relative;top: -15px;left: 10px;">
+                    @item.UpdateDate
+                </div>
+            </div>
+            <div class="product-Details">
+                <div class="product-content pull-right ">
+                    @item.Description
+                </div>
+                <div class="pull-left ">
+                    <img src="/Images/@item.PicName" style="padding-top: 20px; width: 100px; height: 130px; float: left;" />
+                </div>
+
+            </div>
+
+            <div class="countinue">
+                <a asp-action="Detail" asp-controller="Home" asp-route-id="@item.Id" asp-route-title="@item.Name.Replace(" ","-")"
+                   target="_blank" class="btn-contitue pull-right">ادامه مطلب</a>
+            </div>
+        </div>
+    }
+</div>

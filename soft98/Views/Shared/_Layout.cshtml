@@ -15,7 +15,9 @@
     <header>
         <div class="header">
             <div class="divSearch">
-                <input type="text" name="search" class="pull-left headerIcon" />
+                
+                <input type="text" name="search" class="pull-left headerIcon" id="myInputSearch"/>
+ 
             </div>
             @{
                 if (User.Identity.IsAuthenticated)
@@ -43,7 +45,7 @@
                 <a href="#" class="arrow-header pull-left" style=" margin: 33px 0px 0 -30px;"><i class="fa fa-sort-down"></i></a>
 
                 <div class="submenu">
-                    <a href="#"><i class="fas fa-caret-left" style="padding: 5px; float: right;"></i>تماس با ما</a>
+                    <a asp-controller="Home" asp-action="ContactUs"><i class="fas fa-caret-left" style="padding: 5px; float: right;"></i>تماس با ما</a>
                     <a href="#"><i class="fas fa-caret-left" style="padding: 5px; float: right;"></i>نظرات و پیشنهادات</a>
                 </div>
             </div>
@@ -52,13 +54,13 @@
 
             @*//////////// منو //////////////*@
             <div class="col-lg-10 hidden-md hidden-sm hidden-xs ">
-                <a href="/" class="pull-right Home" style="position: relative;top: 18px;">خانه</a>
+                <a href="/" class="pull-right Home" style="position: relative;top:20px;">خانه</a>
 
                 @(await Component.InvokeAsync("MainMenuComponent"))
 
                 <div class="col-lg-2" style="display: inline-block; margin-right: 90px;">
                     <div style="margin-top:-1px; color: #cccbcb">|</div>
-                    <a href="/favicon.ico" class="pull-right Home" style="position: relative;top: -22px;right: 0px;margin-right: 25px;">تبلیغات</a>
+                    <a  asp-controller="Home" asp-action="Tarefeh" class="pull-right Home" style="position: relative;top: -18px;right: 0px;margin-right: 25px;">تبلیغات</a>
                 </div>
             </div>
 

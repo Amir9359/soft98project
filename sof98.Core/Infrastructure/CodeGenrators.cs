@@ -14,5 +14,11 @@ namespace soft98.Core.Infrastructure
             return Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6);
         }
 
+        public static string OrderCode()
+        {
+            var rand = new Random();
+            string stCode = rand.Next(11000000, 99999999).ToString();
+            return stCode;
+        }
     }
 }

@@ -56,8 +56,8 @@ namespace soft98.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ExpireDate")
-                        .HasMaxLength(23)
-                        .HasColumnType("nvarchar(23)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("FollowNumber")
                         .HasMaxLength(15)
@@ -81,8 +81,8 @@ namespace soft98.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("RentDate")
-                        .HasMaxLength(23)
-                        .HasColumnType("nvarchar(23)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<int?>("SeenNumber")
                         .HasColumnType("int");
@@ -119,6 +119,27 @@ namespace soft98.DataAccessLayer.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("soft98.DataAccessLayer.Entities.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("soft98.DataAccessLayer.Entities.Matlab", b =>

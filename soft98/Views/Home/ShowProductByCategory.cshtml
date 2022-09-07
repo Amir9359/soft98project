@@ -1,6 +1,15 @@
 ﻿@model IEnumerable<soft98.DataAccessLayer.Entities.Product>
 @{
-    ViewData["Title"] = "ShowProductByCategory";
+    @if (Model.Count() != 0)
+    {
+        ViewData["Title"] = "نرم افزار های در دسته "  + Model.First().Category.Name;
+
+    }
+    else
+    {
+        ViewData["Title"] = "";
+
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

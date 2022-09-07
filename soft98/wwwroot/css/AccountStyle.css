@@ -32,7 +32,8 @@
     background-color: #7bad49;
     color: white;
     font-size: 18px;
-   
+    font-family: auto;
+    transition: 0.5s;
 }
 
 .btn-block-green {
@@ -40,15 +41,17 @@
     color: white;
     font-size: 18px;
     position: relative;
-    top: 110px;
-    right: -249px;
+    top: 115px;
+    right: -85px;
+    padding: 8px 20px;
+    font-family: auto;
 }
 
 .btn-green:hover {
     background-color: green;
     color: white;
     font-size: 18px;
-    margin-top: 20px;
+   
     margin-bottom: 5px;
 }
 
@@ -127,6 +130,7 @@
     color: white;
     font-size: 18px;
     padding: 20px;
+    text-align: center;
 }
 
 .siteDesign {
@@ -232,20 +236,50 @@
     font-size: 18px;
     padding: 10px;
 }
+.btn-td {
+    width: 20%;
+}
 
 .exit {
     border-top: 1px solid darkgray;
     color: #f82929 !important;
+}
+.table-adv {
+    margin: 10px 20px;
 }
 @media screen and (max-width: 758px) {
     .captchaStyle {
         transform: scale(0.65);
         margin: 3% 3%;
     }
+    .footer {
+        font-size: 13px;
+    }
+    .textregister {
+        font-size: 17px;
+    }
 }
 @media (max-width: 510px) {
     .captchaStyle {
         transform: scale(0.40);
         margin: 3% 3%;
+    }
+    .footer {
+        font-size: 13px;
+    }
+    .siteDesign {
+        width: 203px;
+        padding: 5px;
+        height: 30px;
+    }
+    .textregister {
+        font-size: 17px;
+    }
+    .btn-td {
+        width: 5% !important;
+    }
+    .table-adv {
+        margin: 10px;
+        font-size: 12px;
     }
 }

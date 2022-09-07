@@ -1,0 +1,94 @@
+﻿@using soft98.Core.Interface
+@using soft98.Core.Infrastructure
+@using soft98.DataAccessLayer.Entities
+@model IEnumerable<soft98.DataAccessLayer.Entities.Banner>
+
+@{
+    Layout = null;
+    var editeEnable = false;
+    var userid = ViewBag.userid;
+    BannerFactor bannerFact = null;
+}
+@inject BannerScope bannerScope
+@inject showbannerFactorDe bannerFactorDe
+
+
+<div class="mainpage">
+    <div class="logo pull-right "><img src="~/Images/logo.png" /></div><br />
+    <div class="register col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+        <div class="registerInner">
+            <i class="pull-right fas fa-pause pause"></i><div class="textregister"> نمایش تعرفه تبلیغات</div>
+            <hr class="line" />
+            <table  class="table text-center">
+
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width: 10%">
+                            @Html.DisplayNameFor(model => model.PlaceCode)
+                        </th>
+                        <th class="text-center" style="width: 20%">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th class="text-center" style="width: 20%">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th class="text-center" style="width: 10%">
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+                        <th class="text-center" style="width: 20%">
+                            عملیات
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (userid != null)
+                        {
+                           bannerFact = await bannerFactorDe.showbannerFactor(item.Id, userid.Result);
+
+                        }
+                        <tr style=" height: 50px;">
+                            <td style="width: 10%">
+                                @Html.DisplayFor(modelItem => item.PlaceCode)
+                            </td>
+                            <td style="width: 20%; padding: 0 10px;">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td style="width: 20%">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td style="width: 10%" >
+                                @if (bannerScope.CheckFactor(item.Id))
+                                {
+                                    <p> اجاره شده</p>
+                                }
+                                else
+                                {
+                                    <p> آماده اجاره  </p>
+
+                                }
+                            </td>
+                            <td style="width: 20%" class="btn-td">
+                                @if (bannerScope.CheckFactor(item.Id))
+                                {
+                                    <a class="btn-xs btn-default btn-adv"> سفارش شده</a>
+                                  
+                                    @if (bannerFact != null )
+                                    {
+                                        <a  asp-controller="Home" asp-action="Edit" asp-route-id="@bannerFact.Id" class="btn-xs btn-warning btn-adv"> تغییر مشخصات تبلیغ </a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a asp-controller="Home" asp-action="Payment" asp-route-id="@item.Id" class="btn-xs btn-info btn-adv"> سفارش</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

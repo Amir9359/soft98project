@@ -62,5 +62,10 @@ namespace soft98.Core.Interface
 
         Task<bool> UpdateProductDownload(int id, int ProductId, string Productink, string fileName, string volume);
 
+
+        /////////////////////////////////////////
+        Task<List<Contact>> ShowContacts();
+        Task<Contact> ShowContactById(int id);
+        Task<bool> RemoveContact(int id);
     }
 }

@@ -31,6 +31,8 @@ namespace soft98
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+ 
+
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -38,9 +40,15 @@ namespace soft98
                 opt.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(option =>
             {
-                option.LoginPath = "/Account/Login";
+                option.LoginPath = "/";
                 option.LogoutPath = "/Account/SignOut";
-            });
+                option.AccessDeniedPath = "/Home/index";
+            })
+                .AddJwtBearer(options => {
+                    options.Audience = "https://localhost:44358/";
+                    options.Authority = "https://localhost:44358/";
+                }); ;
+
 
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
@@ -49,6 +57,8 @@ namespace soft98
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IMainMenuRepository, MainMenuRepository>();
+            services.AddScoped<BannerScope>();
+            services.AddScoped<showbannerFactorDe>();
 
             services.Configure<RecaptchaSettings>(Configuration.GetSection("RecaptchaSettings"));
             services.AddScoped<IRecaptchaService, RecaptchaService>();
@@ -68,6 +78,7 @@ namespace soft98
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(routes =>
             {

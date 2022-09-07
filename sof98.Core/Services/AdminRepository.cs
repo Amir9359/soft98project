@@ -149,7 +149,7 @@ namespace soft98.Core.Services
                 matlab.IsSoft = isSoft;
                 matlab.IsMobile = isMobile;
                 matlab.IsTech = isTech;
-
+                matlab.Date = PersianDateTime.Now.ToString("dddd d MMMM yyyy");
                 return true;
             }
             else
@@ -218,7 +218,7 @@ namespace soft98.Core.Services
                 banner.Description = description;
                 banner.Price = price;
                 banner.IsActive = IsActive;
-
+                
                 _context.Banners.Update(banner);
                 return true;
             }
@@ -308,7 +308,7 @@ namespace soft98.Core.Services
                 Product.Name = name;
                 Product.Description = description;
                 Product.PicName = picName;
-                Product.UpdateDate = PersianDateTime.Now.ToString("yyyy/MM/dd");
+                Product.UpdateDate = PersianDateTime.Now.ToString("dddd d MMMM yyyy");
                 Product.InstallDescription = InstallDescription;
 
                 _context.Products.Update(Product);
@@ -359,10 +359,34 @@ namespace soft98.Core.Services
                 ProductDownload.Productlink = Productink;
                 ProductDownload.FileName = fileName;
                 ProductDownload.Volume = volume;
-
+                
                 _context.ProductDownloadFiles.Update(ProductDownload);
                 return true;
             }
+            return false;
+        }
+
+        public async Task<List<Contact>> ShowContacts()
+        {
+            var contacts = await _context.Contacts.OrderBy(o => o.Id).ToListAsync();
+            return contacts;
+        }
+
+        public async Task<Contact> ShowContactById(int id)
+        {
+            var contact = await _context.Contacts.FindAsync(id);
+            return contact;
+        }
+
+        public async Task<bool> RemoveContact(int id)
+        {
+            var contact = await _context.Contacts.FindAsync(id);
+            if (contact != null)
+            {
+                 _context.Contacts.Remove(contact);
+                 return true;
+            }
+
             return false;
         }
     }

@@ -1,0 +1,32 @@
+﻿@model soft98.Core.ViewModels.UpdateImgViewModel
+
+@{
+    ViewData["Title"] = "اختصاص بنر";
+    Layout = "_AccountLayout";
+}
+<div class="mainpage">
+    <div class="logo pull-right "><img src="~/Images/logo.png" /></div><br />
+    <div class="register col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+        <div class="registerInner">
+            <i class="pull-right fas fa-pause pause"></i><div class="textregister">ویرایش اطلاعات</div>
+            <hr class="line" />
+                <form asp-action="Edit"  enctype="multipart/form-data" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group registerStyle" style="float: unset; width: 60%; ">
+                        <label asp-for="PicFile" class="control-label labelStyle"></label>
+                        <input type="file" asp-for="PicFile"   style="margin-right: 10px; font-size: 17px;padding: 4px 5px" />
+                        <span asp-validation-for="PicFile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group registerStyle" style="float: unset; width: 60%;">
+                        <label asp-for="Link" class="control-label labelStyle"></label>
+                        <input asp-for="Link" class="form-control" style="margin-right:10px"/>
+                        <span asp-validation-for="Link" class="text-danger"></span>
+                    </div>
+                    <div class="form-group registerStyle" style="float: unset; width: 60%; ">
+                        <input type="submit" value="ارسال" class="btn btn-green  " style="margin-right:10px"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+       </div>

@@ -1,0 +1,34 @@
+﻿@model soft98.DataAccessLayer.Entities.Contact
+
+@{
+    ViewData["Title"] = "ارسال پیام";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="mainpage">
+    <div class="logo pull-right "><img src="~/Images/logo.png" /></div><br />
+    <div class="register col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+        <div class="registerInner">
+            <i class="pull-right fas fa-pause pause"></i><div class="textregister">تغییر اطلاعات کاربری</div>
+            <hr class="line" />
+            <form asp-action="ContactUs" class="table-chart" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group registerStyle">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group registerStyle">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group registerStyle">
+                    <input type="submit" value="ایجاد" class="btn btn-block btn-green" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

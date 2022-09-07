@@ -7,33 +7,49 @@
         @foreach (var softitem in Model.Where(s => s.IsSoft == true))
         {
 
-        <li class="matlab-items"> <a href="#" class="content"><p style="float: right; margin-bottom: 0px;">@softitem.Title <i class="fa fa-angle-double-left" style="color: #488a06; padding: 3px;float: right"></i></p></a></li>
+            <li class="matlab-items">
+                <a asp-action="ShowMatlabById" asp-controller="Home" asp-route-id="@softitem.Id"
+                   asp-route-title="@softitem.Title.Replace(" ", "-")" class="content">
+                    <p style="float: right; margin-bottom: 0px;">
+                        @softitem.Title <i class="fa fa-angle-double-left"
+                                           style="color: #488a06; padding: 3px; float: right"></i>
+                    </p>
+                </a>
+            </li>
 
         }
     </ul>
 }
 @if (Model.Any(a => a.IsMobile))
 {
-<ul class="tabcontent" id="mobile">
-    @foreach (var mobileItem in Model.Where(s => s.IsMobile == true))
-    {
+    <ul class="tabcontent" id="mobile">
+        @foreach (var mobileItem in Model.Where(s => s.IsMobile == true))
+        {
 
-        <li class="matlab-items"><a href="#" class="content"><p style="float: right; margin-bottom: 0px;"> @mobileItem.Title<i class="fa fa-angle-double-left" style="color: #488a06; padding: 3px;float: right"></i>  </p></a> </li>
+            <li class="matlab-items">
+                <a asp-action="ShowMatlabById" asp-controller="Home" asp-route-id="@mobileItem.Id"
+                   asp-route-title="@mobileItem.Title.Replace(" ", "-")" class="content">
+                    <p style="float: right; margin-bottom: 0px;"> @mobileItem.Title
+                        <i class="fa fa-angle-double-left" style="color: #488a06; padding: 3px; float: right"></i> </p>
+                </a>
+            </li>
 
-    }
-</ul>
+        }
+    </ul>
 
 }
 @if (Model.Any(a => a.IsTech))
 {
-<ul style=" padding: 15px 0 0 0;">
-    @foreach (var TechItem in Model.Where(s => s.IsTech == true))
-    {
-        <li class="matlab-tech-items">
-            <a href="#" class="content">
-                <p style="float: right; margin-bottom: 0px;">@TechItem.Title <i class="fa fa-angle-double-left" style="color: #488a06; padding: 3px;float: right"></i> </p><br />
-            </a>
-        </li>
-    }
-</ul>
+    <ul style=" padding: 15px 0 0 0;">
+        @foreach (var TechItem in Model.Where(s => s.IsTech == true))
+        {
+            <li class="matlab-tech-items">
+                <a asp-action="ShowMatlabById" asp-controller="Home" asp-route-id="@TechItem.Id" 
+                   asp-route-title="@TechItem.Title.Replace(" ", "-")" class="content">
+                    <p style="float: right; margin-bottom: 0px;">@TechItem.Title 
+                        <i class="fa fa-angle-double-left" style="color: #488a06; padding: 3px;float: right"></i> </p><br />
+                </a>
+            </li>
+        }
+    </ul>
 }

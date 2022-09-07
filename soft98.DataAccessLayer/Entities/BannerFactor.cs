@@ -15,11 +15,11 @@ namespace soft98.DataAccessLayer.Entities
         public int BannerId { get; set; }
 
         [Display(Name = "تاریخ شروع اجاره بنر")]
-        [MaxLength(23,ErrorMessage ="مقدار {0} نمیتواند بیشتر از {1} باشد" )]
+        [MaxLength(40,ErrorMessage ="مقدار {0} نمیتواند بیشتر از {1} باشد" )]
         public string RentDate { get; set; }
 
         [Display(Name = "تاریخ انقضا اجاره بنر")]
-        [MaxLength(23, ErrorMessage = "مقدار {0} نمیتواند بیشتر از {1} باشد")]
+        [MaxLength(40, ErrorMessage = "مقدار {0} نمیتواند بیشتر از {1} باشد")]
         public string ExpireDate { get; set; }
 
         [Display(Name = "مبلغ سفارش")]
@@ -38,14 +38,7 @@ namespace soft98.DataAccessLayer.Entities
 
         [Display(Name = "تعداد بازدید")]
         public int? SeenNumber { get; set; }
-       
-        [Display(Name = "انتخاب تصویر")]
-        [NotMapped]
-        public IFormFile PicFile { get; set; }
-        
-        [NotMapped]
-        public string PicAddress { get; set; }
-
+      
         [Display(Name = "تصویر شاخص")]
         [MaxLength(100,ErrorMessage ="مقدار {0} نمیتواند بیشتر از {1} باشد" )]
         public string PicName { get; set; }

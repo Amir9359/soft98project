@@ -37,7 +37,7 @@ namespace soft98.Areas.Admin.Controllers
                 {
                     Title = matlab.Title,
                     Description = matlab.Description,
-                    Date = DateTime.Now.ToString(),
+                    Date = PersianDateTime.Now.ToString("yyyy/MM/dd"),
                     Show = matlab.Show,
                     NumberSeen = 0,
                     IsSoft = matlab.IsSoft,

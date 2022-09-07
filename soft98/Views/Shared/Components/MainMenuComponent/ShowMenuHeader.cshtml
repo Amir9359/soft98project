@@ -5,9 +5,9 @@
         <ul style="direction: rtl;right: 80px; margin-right: -10px;position: relative;">
             @foreach (var item in Model.Where(s => s.ParentId == null))
             {
-                <li class="col-lg-12 " style="text-align: center;margin-top: -2px;width: 148px;padding: 0;float: right;">
-                    <a  asp-action="ShowProductByCategory" asp-route-id="@item.Id" asp-route-title="@item.Name.Replace(" ","-").ToString()"
-                        id="menu1">@item.Name</a>
+                <li class="col-lg-12 menu1" style="text-align: center; margin-top: -2px; width: 148px; height: 47px; padding: 0; float: right;">
+                    <a  asp-action="ShowProductByCategory" asp-route-id="@item.Id" asp-route-title="@item.Name.Replace(" ","-")"
+                        id="menu1" >@item.Name</a>
                     <div class="col-lg-12" style="margin-right: -3px; position: relative;top:0px;">
                         <i class="fas fa-sort-down arrow-header text-center"></i>
                     </div>
@@ -19,7 +19,7 @@
                             {
                                 <li class="col-lg-4 col-md-4" style="direction: rtl;float: right;">
                                     <a id="menu2"  asp-action="ShowProductByCategory" asp-route-id="@sub.Id"
-                                       asp-route-title="@sub.Name.Replace(" ","-").ToString()">@sub.Name</a>
+                                       asp-route-title="@sub.Name.Replace(" ","-")">@sub.Name</a>
                                     @if (Model.Any(s => s.ParentId == sub.Id))
                                     {
                                         <ul style="right: -40px">
@@ -27,7 +27,7 @@
                                             {
                                                 <li class="col-lg-4 col-md-4" style="width: 150px; top: 0;">
                                                     <a asp-action="ShowProductByCategory" asp-route-id="@subitem.Id"
-                                                       asp-route-title="@subitem.Name.Replace(" ", "-").ToString()" id="menu3">
+                                                       asp-route-title="@subitem.Name.Replace(" ", "-")" id="menu3">
                                                          <i class="fas fa-caret-left arrow-left"></i>@subitem.Name </a>
                                                 </li>
                                             }

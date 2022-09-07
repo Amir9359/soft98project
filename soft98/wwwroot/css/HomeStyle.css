@@ -7,7 +7,7 @@
 
 .header {
     width: 100%;
-    height: 60px;
+    height: 66px;
     background-color: #f5f5f5;
     box-shadow: 2px 2px #e9e5e5;
 }
@@ -31,9 +31,10 @@ li {
     transition-duration: 0.5s;
     margin-left: -10px;
 }
-li a#menu1 {
-    color: black;
-}
+    li a#menu1 {
+        color: black;
+        padding: 10px 15px;
+    }
 
     li a#menu1:hover {
         color: white;
@@ -42,6 +43,11 @@ li a#menu1 {
         border-radius: 5px;
         padding: 10px 20px;
     }
+.menu1:hover .arrow-header {
+    font-size: 26px;
+    margin: -2.5px 0 0 -5px;
+}
+
 ul li ul {
     width: 500%;
     height: 300px;
@@ -53,7 +59,7 @@ ul li ul {
     opacity: 0;
     transition: all 0.5s ease;
     display: none;
-    margin-top: 2px;
+    margin-top: 5px;
     border-radius: 4px;
     color: #7bad49;
     text-align: right;
@@ -159,6 +165,7 @@ ul li ul li ul {
 .btn-green:hover {
     background-color: green;
 }
+
 .textlogin {
     color: #4fa8c4;
     font-size: 18px;
@@ -171,6 +178,7 @@ ul li ul li ul {
     color: #7bad49;
     font-size: 20px;
     margin: 0px 0 0 -5px;
+    transition: 0.3s all;
 }
 .headerIconLogin {
     font-size: 19px;
@@ -178,6 +186,7 @@ ul li ul li ul {
     color: black;
     padding: 5px 15px;
 }
+
 .headerIconLogin:hover {
     color: white;
     text-decoration: none;
@@ -194,7 +203,7 @@ ul li ul li ul {
     display: none;
     position: absolute;
     left: 0;
-    top: -4px;
+    top: -1px;
     background-color: #f5f5f5;
     width: 200px;
     height: auto;
@@ -237,6 +246,7 @@ ul li ul li ul {
     }
 .divSearch input[type=text] {
     font-size: 16px;
+    line-height: 1.5;
     float: left;
     width: 30px;
     transition: width 0.4s ease-in-out;
@@ -257,8 +267,15 @@ ul li ul li ul {
         border-radius: 5px;
         outline: 1px solid;
         box-shadow: 3px 3px #4fa8c4;
+        background-image: none;
     }
     .divSearch input[type=text]:visited {
+        content: "";
+    }
+    .divSearch input[type=text]:visited {
+        content: "";
+    }
+    .divSearch input[type=text]:d {
         content: "";
     }
 
@@ -266,8 +283,7 @@ ul li ul li ul {
         color: red;
         font-size: 18px;
         margin: 31px 0 0 -6px;
-        animation: blinker 2s infinite; 
-
+        animation: blinker 2s infinite;
     }
     @keyframes blinker {
         50% {
@@ -393,7 +409,7 @@ ul li ul li ul {
     padding: 5px 10px 6px;
     font-size: 17px;
     width: 25%;
-    height: 50px;
+    height: 50.5px;
 }
 .logoMain {
     width: 90%;
@@ -546,6 +562,7 @@ ul li ul li ul {
     margin: 10px 0 30px 0;
     height: auto;
     display: grid;
+    align-items: start;
     grid-template-columns: 29% 70%;
     grid-gap: 25px;
     grid-template-areas: "adverb software software"
@@ -719,8 +736,14 @@ ul li ul li ul {
     border-bottom-right-radius: 5px;
     padding: 15px;
 }
+.btn-adv {
+    text-decoration: none;
 
+}
 
+.btn-adv:hover {
+    text-decoration: none;
+}
 
 @media screen and (max-width: 1200px) {
     .support {
@@ -828,9 +851,13 @@ ul li ul li ul {
         margin: 20px 10px;
          
     }
+    .product-content {
+        font-size: 12px
+    }
     .product-wrap {
         grid-template-columns: 55% 35% 0;
     }
+
     .list-Download {
         min-height: 100%;
         width: 79.2%;
